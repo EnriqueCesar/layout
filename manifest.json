@@ -1,14 +1,22 @@
 {
-  "name": "Layouts Visuales Starbucks",
-  "short_name": "Layouts",
-  "start_url": "index.html",
+  "name": "STARBUCKS Layouts",
+  "short_name": "LayOut",
+  "description": "LayOut vs Acomodo Real",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#f7f4ef",
+  "background_color": "#f7faf8",
   "theme_color": "#006241",
+  "orientation": "portrait",
   "icons": [
     {
-      "src": "assets/layouts_icon.png",
+      "src": "icons/icon-192.png",
       "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ]
