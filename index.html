@@ -958,17 +958,6 @@ function exportPDF(){
   html2pdf().set(opt).from(element).save();
 }
 
-function sendWhatsApp(){
-  const c=getCampaign();
-  const tienda=storeName.value.trim()||"Sin definir";
-  const area=getVariantName();
-  const file=`LayOut_${cleanFile(area)}_${cleanFile(tienda)}`;
-
-  const msg=`Layout Starbucks%0A%0ATienda: ${encodeURIComponent(tienda)}%0ACampaña: ${encodeURIComponent(c.id+" "+c.icon)}%0AÁrea/Estación: ${encodeURIComponent(area)}%0AArchivo sugerido: ${encodeURIComponent(file)}%0A%0AComparativo LayOut vs Acomodo Real.`;
-
-  window.open(`https://wa.me/?text=${msg}`,"_blank");
-}
-
 renderCatalog();
 updateView(false);
 </script>
