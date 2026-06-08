@@ -17,310 +17,48 @@
   --soft:#eef7f2;
   --danger:#7a2e2e;
 }
-
 *{box-sizing:border-box}
-
-body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:var(--bg);
-  color:var(--ink);
-}
-
-.app{
-  max-width:1400px;
-  margin:auto;
-  padding:14px;
-}
-
-.header{
-  background:white;
-  border:1px solid var(--line);
-  border-top:7px solid var(--green);
-  border-radius:18px;
-  padding:14px;
-  margin-bottom:12px;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.logo{
-  width:46px;
-  height:46px;
-  border-radius:12px;
-  background:var(--soft);
-  display:grid;
-  place-items:center;
-  font-size:24px;
-}
-
-h1{
-  margin:0;
-  color:var(--green);
-  font-size:24px;
-}
-
-.subtitle{
-  font-size:12px;
-  margin-top:2px;
-}
-
-.controls{
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:10px;
-  margin-top:14px;
-}
-
-label{
-  font-size:11px;
-  font-weight:900;
-  color:var(--green);
-  text-transform:uppercase;
-}
-
-input,select{
-  width:100%;
-  padding:12px;
-  border:1px solid var(--line);
-  border-radius:12px;
-  font-size:15px;
-  background:white;
-  color:var(--ink);
-}
-
-.actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:12px;
-}
-
-button{
-  border:0;
-  border-radius:12px;
-  padding:12px 14px;
-  background:var(--green);
-  color:white;
-  font-weight:900;
-  cursor:pointer;
-  font-size:14px;
-}
-
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
+.app{max-width:1400px;margin:auto;padding:14px}
+.header{background:white;border:1px solid var(--line);border-top:7px solid var(--green);border-radius:18px;padding:14px;margin-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px}
+.logo{width:46px;height:46px;border-radius:12px;background:var(--soft);display:grid;place-items:center;font-size:24px}
+h1{margin:0;color:var(--green);font-size:24px}
+.subtitle{font-size:12px;margin-top:2px}
+.controls{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:14px}
+label{font-size:11px;font-weight:900;color:var(--green);text-transform:uppercase}
+input,select{width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;font-size:15px;background:white;color:var(--ink)}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+button{border:0;border-radius:12px;padding:12px 14px;background:var(--green);color:white;font-weight:900;cursor:pointer;font-size:14px}
 button.secondary{background:var(--green2)}
-
-button.light{
-  background:var(--soft);
-  color:var(--green);
-  border:1px solid var(--line);
-}
-
-button.danger{
-  background:#f4eeee;
-  color:var(--danger);
-  border:1px solid #ead0d0;
-}
-
-.catalog{
-  display:flex;
-  gap:8px;
-  overflow-x:auto;
-  padding:10px 0 2px;
-}
-
-.thumb{
-  min-width:98px;
-  border:2px solid transparent;
-  border-radius:13px;
-  padding:6px;
-  background:white;
-  cursor:pointer;
-  box-shadow:0 2px 8px rgba(0,0,0,.08);
-}
-
-.thumb.active{
-  border-color:var(--green);
-  background:var(--soft);
-}
-
-.thumb img{
-  width:86px;
-  height:52px;
-  object-fit:cover;
-  border-radius:8px;
-  display:block;
-  margin:auto;
-}
-
-.thumb span{
-  display:block;
-  text-align:center;
-  font-size:11px;
-  font-weight:900;
-  color:var(--green);
-  margin-top:5px;
-}
-
-.sheet{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:14px;
-  min-height:1120px;
-}
-
-.sheet-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  border-bottom:3px solid var(--green);
-  padding-bottom:10px;
-  margin-bottom:12px;
-}
-
-.sheet-title{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.sheet-title .icon{
-  width:44px;
-  height:44px;
-  border-radius:10px;
-  background:var(--soft);
-  display:grid;
-  place-items:center;
-  font-size:22px;
-}
-
-.main-title{
-  font-size:25px;
-  color:var(--green);
-  font-weight:900;
-}
-
-.meta{
-  text-align:right;
-  font-size:11px;
-  line-height:1.4;
-}
-
-.compare{
-  display:grid;
-  grid-template-rows:1fr 1fr;
-  gap:12px;
-  height:960px;
-}
-
-.block{
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:10px;
-  display:flex;
-  flex-direction:column;
-  min-height:0;
-}
-
-.block-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  border-bottom:2px solid var(--green);
-  padding-bottom:7px;
-  margin-bottom:8px;
-}
-
-.kicker{
-  font-size:12px;
-  font-weight:900;
-  color:var(--green);
-  text-transform:uppercase;
-}
-
-.block-title{
-  font-size:21px;
-  color:var(--green);
-  font-weight:900;
-  margin-top:3px;
-}
-
-.code{
-  font-size:12px;
-  font-weight:900;
-  color:var(--green);
-}
-
-.imgbox{
-  flex:1;
-  min-height:0;
-  border:1px dashed #bdd8cc;
-  border-radius:12px;
-  background:#fbfdfc;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  position:relative;
-}
-
-.imgbox img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  display:block;
-}
-
-.empty{
-  text-align:center;
-  color:#5f7d72;
-  font-weight:900;
-  padding:20px;
-}
-
-.real-actions{
-  position:absolute;
-  bottom:12px;
-  left:12px;
-  right:12px;
-  display:flex;
-  justify-content:center;
-  gap:8px;
-  flex-wrap:wrap;
-}
-
-.real-actions button{
-  padding:10px 12px;
-  font-size:13px;
-}
-
-.note{
-  margin-top:6px;
-  font-size:10px;
-  text-align:center;
-  color:#6b8178;
-}
-
-.optional-tools{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-  margin-bottom:8px;
-}
-
+button.light{background:var(--soft);color:var(--green);border:1px solid var(--line)}
+button.danger{background:#f4eeee;color:var(--danger);border:1px solid #ead0d0}
+.catalog{display:flex;gap:8px;overflow-x:auto;padding:10px 0 2px}
+.thumb{min-width:98px;border:2px solid transparent;border-radius:13px;padding:6px;background:white;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.thumb.active{border-color:var(--green);background:var(--soft)}
+.thumb img{width:86px;height:52px;object-fit:cover;border-radius:8px;display:block;margin:auto}
+.thumb span{display:block;text-align:center;font-size:11px;font-weight:900;color:var(--green);margin-top:5px}
+.sheet{background:white;border:1px solid var(--line);border-radius:18px;padding:14px;min-height:1120px}
+.sheet-head{display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--green);padding-bottom:10px;margin-bottom:12px}
+.sheet-title{display:flex;align-items:center;gap:10px}
+.sheet-title .icon{width:44px;height:44px;border-radius:10px;background:var(--soft);display:grid;place-items:center;font-size:22px}
+.main-title{font-size:25px;color:var(--green);font-weight:900}
+.meta{text-align:right;font-size:11px;line-height:1.4}
+.compare{display:grid;grid-template-rows:1fr 1fr;gap:12px;height:960px}
+.block{border:1px solid var(--line);border-radius:16px;padding:10px;display:flex;flex-direction:column;min-height:0}
+.block-head{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid var(--green);padding-bottom:7px;margin-bottom:8px}
+.kicker{font-size:12px;font-weight:900;color:var(--green);text-transform:uppercase}
+.block-title{font-size:21px;color:var(--green);font-weight:900;margin-top:3px}
+.code{font-size:12px;font-weight:900;color:var(--green)}
+.imgbox{flex:1;min-height:0;border:1px dashed #bdd8cc;border-radius:12px;background:#fbfdfc;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.imgbox img{width:100%;height:100%;object-fit:contain;display:block}
+.empty{text-align:center;color:#5f7d72;font-weight:900;padding:20px}
+.real-actions{position:absolute;bottom:12px;left:12px;right:12px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.real-actions button{padding:10px 12px;font-size:13px}
+.note{margin-top:6px;font-size:10px;text-align:center;color:#6b8178}
+.optional-tools{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
 .hidden{display:none!important}
-
-.footer{
-  display:flex;
-  justify-content:space-between;
-  font-size:10px;
-  margin-top:8px;
-  color:#6b8178;
-}
+.footer{display:flex;justify-content:space-between;font-size:10px;margin-top:8px;color:#6b8178}
 
 @media(max-width:760px){
   .controls{grid-template-columns:1fr}
@@ -333,38 +71,12 @@ button.danger{
 }
 
 @media print{
-
-  body{
-    background:white;
-  }
-
-  .header,
-  .actions,
-  .real-actions,
-  .catalog,
-  .optional-tools{
-    display:none!important;
-  }
-
-  .block-head{
-    margin-bottom:8px;
-  }
-
-  .sheet{
-    border:0;
-    border-radius:0;
-    min-height:100vh;
-  }
-
-  .app{
-    padding:0;
-    max-width:none;
-  }
-
-  @page{
-    size:A4 portrait;
-    margin:8mm;
-  }
+  body{background:white}
+  .header,.actions,.real-actions,.catalog,.optional-tools{display:none!important}
+  .block-head{margin-bottom:8px}
+  .sheet{border:0;border-radius:0;min-height:100vh}
+  .app{padding:0;max-width:none}
+  @page{size:A4 portrait;margin:8mm}
 }
 </style>
 </head>
@@ -467,7 +179,7 @@ button.danger{
           <div class="real-actions">
             <button onclick="takePhoto()">📸 Tomar foto</button>
             <button class="secondary" onclick="attachPhoto()">🖼 Adjuntar</button>
-            </div>
+          </div>
         </div>
 
         <div class="note">La exportación se genera únicamente con la estación/apartado seleccionado.</div>
@@ -597,10 +309,17 @@ const stations=[
   },
   {
     code:"CBE",
-    name:"Bebidas Frías",
+    name:"Bebidas Frías CBE",
     optional:false,
     variants:["CBE 01","CBE 02","CBE 03","CBE 04","CBE 05"],
     base:"cbe"
+  },
+  {
+    code:"CBS",
+    name:"Bebidas Frías CBS",
+    optional:false,
+    variants:["CBS 01","CBS 02","CBS 03","CBS 04","CBS 05","CBS 06","CBS 07"],
+    base:"cbs"
   },
   {
     code:"FOOD",
@@ -636,6 +355,20 @@ const stations=[
     optional:false,
     variants:["COND 01","COND 02","COND 03","COND 04"],
     base:"cond"
+  },
+  {
+    code:"CONS",
+    name:"Consolidación",
+    optional:false,
+    variants:["CONS 01","CONS 02","CONS 03"],
+    base:"consolidacion"
+  },
+  {
+    code:"PROD",
+    name:"Producción / Mesa Preparación",
+    optional:false,
+    variants:["PROD 01","PROD 02"],
+    base:"produccion"
   },
   {
     code:"OPCIONAL",
