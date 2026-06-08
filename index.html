@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>STARBUCKS Layouts</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<style>
+:root{
+  --green:#006241;
+  --green2:#00754A;
+  --ink:#1e3932;
+  --line:#d8e5df;
+  --bg:#f7faf8;
+  --soft:#eef7f2;
+  --danger:#7a2e2e;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+}
+
+.app{
+  max-width:980px;
+  margin:auto;
+  padding:14px;
+}
+
+.header{
+  background:white;
+  border:1px solid var(--line);
+  border-top:7px solid var(--green);
+  border-radius:18px;
+  padding:14px;
+  margin-bottom:12px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo{
+  width:46px;
+  height:46px;
+  border-radius:12px;
+  background:var(--soft);
+  display:grid;
+  place-items:center;
+  font-size:24px;
+}
+
+h1{
+  margin:0;
+  color:var(--green);
+  font-size:24px;
+}
+
+.subtitle{
+  font-size:12px;
+  margin-top:2px;
+}
+
+.controls{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:10px;
+  margin-top:14px;
+}
+
+label{
+  font-size:11px;
+  font-weight:900;
+  color:var(--green);
+  text-transform:uppercase;
+}
+
+input,select{
+  width:100%;
+  padding:12px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  font-size:15px;
+  background:white;
+  color:var(--ink);
+}
+
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:12px;
+}
+
+button{
+  border:0;
+  border-radius:12px;
+  padding:12px 14px;
+  background:var(--green);
+  color:white;
+  font-weight:900;
+  cursor:pointer;
+  font-size:14px;
+}
+
+button.secondary{background:var(--green2)}
+
+button.light{
+  background:var(--soft);
+  color:var(--green);
+  border:1px solid var(--line);
+}
+
+button.danger{
+  background:#f4eeee;
+  color:var(--danger);
+  border:1px solid #ead0d0;
+}
+
+.catalog{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding:10px 0 2px;
+}
+
+.thumb{
+  min-width:98px;
+  border:2px solid transparent;
+  border-radius:13px;
+  padding:6px;
+  background:white;
+  cursor:pointer;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.thumb.active{
+  border-color:var(--green);
+  background:var(--soft);
+}
+
+.thumb img{
+  width:86px;
+  height:52px;
+  object-fit:cover;
+  border-radius:8px;
+  display:block;
+  margin:auto;
+}
+
+.thumb span{
+  display:block;
+  text-align:center;
+  font-size:11px;
+  font-weight:900;
+  color:var(--green);
+  margin-top:5px;
+}
+
+.sheet{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:14px;
+  min-height:1120px;
+}
+
+.sheet-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:3px solid var(--green);
+  padding-bottom:10px;
+  margin-bottom:12px;
+}
+
+.sheet-title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.sheet-title .icon{
+  width:44px;
+  height:44px;
+  border-radius:10px;
+  background:var(--soft);
+  display:grid;
+  place-items:center;
+  font-size:22px;
+}
+
+.main-title{
+  font-size:25px;
+  color:var(--green);
+  font-weight:900;
+}
+
+.meta{
+  text-align:right;
+  font-size:11px;
+  line-height:1.4;
+}
+
+.compare{
+  display:grid;
+  grid-template-rows:1fr 1fr;
+  gap:12px;
+  height:960px;
+}
+
+.block{
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:10px;
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+}
+
+.block-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  border-bottom:2px solid var(--green);
+  padding-bottom:7px;
+  margin-bottom:8px;
+}
+
+.kicker{
+  font-size:12px;
+  font-weight:900;
+  color:var(--green);
+  text-transform:uppercase;
+}
+
+.block-title{
+  font-size:21px;
+  color:var(--green);
+  font-weight:900;
+  margin-top:3px;
+}
+
+.code{
+  font-size:12px;
+  font-weight:900;
+  color:var(--green);
+}
+
+.imgbox{
+  flex:1;
+  min-height:0;
+  border:1px dashed #bdd8cc;
+  border-radius:12px;
+  background:#fbfdfc;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  position:relative;
+}
+
+.imgbox img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+
+.empty{
+  text-align:center;
+  color:#5f7d72;
+  font-weight:900;
+  padding:20px;
+}
+
+.real-actions{
+  position:absolute;
+  bottom:12px;
+  left:12px;
+  right:12px;
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.real-actions button{
+  padding:10px 12px;
+  font-size:13px;
+}
+
+.note{
+  margin-top:6px;
+  font-size:10px;
+  text-align:center;
+  color:#6b8178;
+}
+
+.optional-tools{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-bottom:8px;
+}
+
+.hidden{display:none!important}
+
+.footer{
+  display:flex;
+  justify-content:space-between;
+  font-size:10px;
+  margin-top:8px;
+  color:#6b8178;
+}
+
+@media(max-width:760px){
+  .controls{grid-template-columns:1fr}
+  .optional-tools{grid-template-columns:1fr}
+  .sheet{min-height:auto}
+  .compare{height:760px}
+  .main-title{font-size:21px}
+  .block-title{font-size:18px}
+  .sheet-head{align-items:flex-start}
+}
+
+@media print{
+
+  body{
+    background:white;
+  }
+
+  .header,
+  .actions,
+  .real-actions,
+  .catalog,
+  .optional-tools{
+    display:none!important;
+  }
+
+  .block-head{
+    margin-bottom:8px;
+  }
+
+  .sheet{
+    border:0;
+    border-radius:0;
+    min-height:100vh;
+  }
+
+  .app{
+    padding:0;
+    max-width:none;
+  }
+
+  @page{
+    size:A4 portrait;
+    margin:8mm;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <div class="header">
+    <div class="brand">
+      <div class="logo">⚙️</div>
+      <div>
+        <h1>STARBUCKS Layouts</h1>
+        <div class="subtitle">LayOut vs Acomodo Real</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div>
+        <label>Tienda</label>
+        <input id="storeName" placeholder="Ej. Plaza Las Flores">
+      </div>
+
+      <div>
+        <label>Campaña</label>
+        <select id="campaignSelect"></select>
+      </div>
+
+      <div>
+        <label>Estación</label>
+        <select id="stationSelect"></select>
+      </div>
+    </div>
+
+    <div class="catalog" id="catalog"></div>
+
+    <div class="actions" id="standardActions">
+      <button class="danger" onclick="clearPhoto('real')">🧹 Limpiar</button>
+      <button class="light" onclick="exportPDF()">📄 Exportar PDF</button>
+      <button class="light" onclick="sendWhatsApp()">📲 WhatsApp</button>
+    </div>
+
+    <div class="actions hidden" id="optionalActions">
+      <button class="danger" onclick="clearPhoto('opt1');clearPhoto('opt2')">🧹 Limpiar</button>
+      <button class="light" onclick="exportPDF()">📄 Exportar PDF</button>
+      <button class="light" onclick="sendWhatsApp()">📲 WhatsApp</button>
+    </div>
+  </div>
+
+  <section class="sheet" id="sheet">
+
+    <div class="sheet-head">
+      <div class="sheet-title">
+        <div class="icon">⚙️</div>
+        <div>
+          <div class="main-title" id="mainTitle">LayOut - SUMMER ☀️</div>
+          <div class="subtitle" id="subTitle">Tienda: Sin definir · Estación: ESP</div>
+        </div>
+      </div>
+
+      <div class="meta">
+        <b>STARBUCKS</b><br>
+        <span id="dateLabel"></span><br>
+        <span id="fileLabel">LayOut_ESP_Tienda</span>
+      </div>
+    </div>
+
+    <div class="compare" id="compare">
+
+      <div class="block" id="theoryBlock">
+        <div class="block-head">
+          <div>
+            <div class="kicker">LAYOUT</div>
+            <div class="block-title" id="layoutTitle">ESP 01 · Espresso / Mastrena</div>
+          </div>
+          <div class="code" id="stationCode">ESP</div>
+        </div>
+
+        <div class="imgbox">
+          <img id="theoryImg" alt="Layout teórico">
+        </div>
+
+        <div class="note">Selecciona la variante que mejor se acople a tu tienda.</div>
+      </div>
+
+      <div class="block" id="realBlock">
+        <div class="block-head">
+          <div>
+            <div class="kicker">LAYOUT REAL</div>
+            <div class="block-title" id="realTitle">Acomodo Real</div>
+          </div>
+          <div class="code">Tienda</div>
+        </div>
+
+        <div class="imgbox" id="realBox">
+          <div class="empty" id="realEmpty">
+            Toma o adjunta una foto real del área seleccionada.
+          </div>
+
+          <img id="realImg" class="hidden" alt="Foto real">
+
+          <div class="real-actions">
+            <button onclick="takePhoto()">📸 Tomar foto</button>
+            <button class="secondary" onclick="attachPhoto()">🖼 Adjuntar</button>
+            <button class="danger" onclick="clearPhoto('real')">🧹 Limpiar</button>
+          </div>
+        </div>
+
+        <div class="note">La exportación se genera únicamente con la estación/apartado seleccionado.</div>
+      </div>
+
+      <div class="block hidden" id="optionalBlock1">
+        <div class="optional-tools">
+          <div>
+            <label>Área 1</label>
+            <select id="optSelect1"></select>
+          </div>
+          <div>
+            <label>Nombre editable 1</label>
+            <input id="optName1" placeholder="Ej. Escritorio Gerencial">
+          </div>
+        </div>
+
+        <div class="block-head">
+          <div>
+            <div class="kicker">EVIDENCIA REAL 1</div>
+            <div class="block-title" id="optTitle1">BOH - Refrigerador 2 Puertas</div>
+          </div>
+          <div class="code">Área 1</div>
+        </div>
+
+        <div class="imgbox">
+          <div class="empty" id="optEmpty1">
+            Toma o adjunta foto real del primer apartado.
+          </div>
+
+          <img id="optImg1" class="hidden" alt="Evidencia 1">
+
+          <div class="real-actions">
+            <button onclick="takeOptionalPhoto(1)">📸 Tomar foto</button>
+            <button class="secondary" onclick="attachOptionalPhoto(1)">🖼 Adjuntar</button>
+            <button class="danger" onclick="clearPhoto('opt1')">🧹 Limpiar</button>
+          </div>
+        </div>
+
+        <div class="note">Mitad superior de la hoja para una evidencia real.</div>
+      </div>
+
+      <div class="block hidden" id="optionalBlock2">
+        <div class="optional-tools">
+          <div>
+            <label>Área 2</label>
+            <select id="optSelect2"></select>
+          </div>
+          <div>
+            <label>Nombre editable 2</label>
+            <input id="optName2" placeholder="Ej. Rack de Limpieza">
+          </div>
+        </div>
+
+        <div class="block-head">
+          <div>
+            <div class="kicker">EVIDENCIA REAL 2</div>
+            <div class="block-title" id="optTitle2">BOH - Refrigerador 1 Puerta</div>
+          </div>
+          <div class="code">Área 2</div>
+        </div>
+
+        <div class="imgbox">
+          <div class="empty" id="optEmpty2">
+            Toma o adjunta foto real del segundo apartado.
+          </div>
+
+          <img id="optImg2" class="hidden" alt="Evidencia 2">
+
+          <div class="real-actions">
+            <button onclick="takeOptionalPhoto(2)">📸 Tomar foto</button>
+            <button class="secondary" onclick="attachOptionalPhoto(2)">🖼 Adjuntar</button>
+            <button class="danger" onclick="clearPhoto('opt2')">🧹 Limpiar</button>
+          </div>
+        </div>
+
+        <div class="note">Mitad inferior de la hoja para una segunda evidencia real.</div>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <span>Uso interno | Layout Visual</span>
+      <span id="footerLabel">ESP · SUMMER</span>
+    </div>
+
+  </section>
+
+</div>
+
+<input id="cameraInput" class="hidden" type="file" accept="image/*" capture="environment">
+<input id="attachInput" class="hidden" type="file" accept="image/*">
+<input id="optCamera1" class="hidden" type="file" accept="image/*" capture="environment">
+<input id="optAttach1" class="hidden" type="file" accept="image/*">
+<input id="optCamera2" class="hidden" type="file" accept="image/*" capture="environment">
+<input id="optAttach2" class="hidden" type="file" accept="image/*">
+
+<script>
+const campaigns=[
+  {id:"WINTER",icon:"❄️"},
+  {id:"SPRING",icon:"🌸"},
+  {id:"SUMMER",icon:"☀️"},
+  {id:"SUMMER II",icon:"🏖️"},
+  {id:"FALL",icon:"🍂"},
+  {id:"XMAS",icon:"🎄"}
+];
+
+const optionalAreas=[
+  "BOH - Refrigerador 2 Puertas",
+  "BOH - Refrigerador 1 Puerta",
+  "BOH - Congelador 2 Puertas",
+  "BOH - Congelador 1 Puerta",
+  "BOH - Rack",
+  "Barra - Refrigerador 2 Puertas",
+  "Barra - Refrigerador 1 Puerta",
+  "Barra - Gaveta",
+  "Otra Área"
+];
+
+const stations=[
+  {
+    code:"ESP",
+    name:"Espresso / Mastrena",
+    optional:false,
+    variants:["ESP 01","ESP 02","ESP 03","ESP 04","ESP 05","ESP 06","ESP 07","ESP 08","ESP 09","ESP 10","ESP 11"],
+    base:"esp"
+  },
+  {
+    code:"CBE",
+    name:"Bebidas Frías",
+    optional:false,
+    variants:["CBE 01","CBE 02","CBE 03","CBE 04","CBE 05"],
+    base:"cbe"
+  },
+  {
+    code:"FOOD",
+    name:"Alimentos / Horno",
+    optional:false,
+    variants:["FOOD 01","FOOD 02","FOOD 03","FOOD 04","FOOD 05","FOOD 06"],
+    base:"food"
+  },
+  {
+    code:"DT",
+    name:"Drive Thru",
+    optional:false,
+    variants:["DT 01","DT 02"],
+    base:"dt"
+  },
+  {
+    code:"HANDOFF",
+    name:"Entrega",
+    optional:false,
+    variants:["HANDOFF 01","HANDOFF 02","HANDOFF 03"],
+    base:"handoff"
+  },
+  {
+    code:"CAFE",
+    name:"Café y Té",
+    optional:false,
+    variants:["CAFÉ 01","CAFÉ 02","CAFÉ 03","CAFÉ 04"],
+    base:"cafe"
+  },
+  {
+    code:"COND",
+    name:"Condimentos",
+    optional:false,
+    variants:["COND 01","COND 02","COND 03","COND 04"],
+    base:"cond"
+  },
+  {
+    code:"OPCIONAL",
+    name:"Opcional / 2 Evidencias",
+    optional:true,
+    variants:optionalAreas,
+    base:"optional"
+  }
+];
+
+let selectedVariant=0;
+
+const campaignSelect=document.getElementById("campaignSelect");
+const stationSelect=document.getElementById("stationSelect");
+const storeName=document.getElementById("storeName");
+
+const optSelect1=document.getElementById("optSelect1");
+const optSelect2=document.getElementById("optSelect2");
+const optName1=document.getElementById("optName1");
+const optName2=document.getElementById("optName2");
+
+campaigns.forEach(c=>{
+  const op=document.createElement("option");
+  op.value=c.id;
+  op.textContent=`${c.id} ${c.icon}`;
+  campaignSelect.appendChild(op);
+});
+
+stations.forEach(s=>{
+  const op=document.createElement("option");
+  op.value=s.code;
+  op.textContent=`${s.code} · ${s.name}`;
+  stationSelect.appendChild(op);
+});
+
+optionalAreas.forEach(a=>{
+  const op1=document.createElement("option");
+  op1.value=a;
+  op1.textContent=a;
+  optSelect1.appendChild(op1);
+
+  const op2=document.createElement("option");
+  op2.value=a;
+  op2.textContent=a;
+  optSelect2.appendChild(op2);
+});
+
+campaignSelect.value="SUMMER";
+stationSelect.value="ESP";
+optSelect1.value=optionalAreas[0];
+optSelect2.value=optionalAreas[1];
+optName1.value=optionalAreas[0];
+optName2.value=optionalAreas[1];
+
+function today(){
+  const d=new Date();
+  return d.toLocaleDateString("es-MX",{day:"2-digit",month:"short",year:"numeric"});
+}
+
+function cleanFile(v){
+  return String(v||"Tienda")
+    .normalize("NFD").replace(/[\u0300-\u036f]/g,"")
+    .replace(/[^A-Za-z0-9_-]/g,"_")
+    .replace(/_+/g,"_")
+    .replace(/^_|_$/g,"")
+    .slice(0,55);
+}
+
+function getCampaign(){
+  return campaigns.find(c=>c.id===campaignSelect.value);
+}
+
+function getStation(){
+  return stations.find(s=>s.code===stationSelect.value);
+}
+
+function getOptionalName(n){
+  const input=n===1 ? optName1 : optName2;
+  const select=n===1 ? optSelect1 : optSelect2;
+  return input.value.trim() || select.value || `Área ${n}`;
+}
+
+function getVariantName(){
+  const s=getStation();
+  if(s.optional){
+    return `${getOptionalName(1)}_${getOptionalName(2)}`;
+  }
+  return s.variants[selectedVariant] || s.variants[0];
+}
+
+function getImagePath(){
+  const s=getStation();
+  const num=String(selectedVariant+1).padStart(2,"0");
+  return `assets/${s.base}_${num}.jpg`;
+}
+
+function placeholder(text,campaign){
+  const svg=`
+  <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680">
+    <rect width="1200" height="680" fill="#f7faf8"/>
+    <rect x="32" y="32" width="1136" height="616" rx="34" fill="#ffffff" stroke="#006241" stroke-width="8"/>
+    <text x="70" y="105" font-family="Arial" font-size="38" font-weight="700" fill="#006241">STARBUCKS | Layout Visual</text>
+    <text x="70" y="185" font-family="Arial" font-size="58" font-weight="900" fill="#006241">${text}</text>
+    <text x="70" y="245" font-family="Arial" font-size="28" fill="#1e3932">${campaign}</text>
+    <rect x="95" y="310" width="1010" height="200" rx="20" fill="#d8efe5"/>
+    <text x="600" y="425" text-anchor="middle" font-family="Arial" font-size="32" font-weight="700" fill="#1e3932">Imagen teórica pendiente</text>
+    <text x="600" y="470" text-anchor="middle" font-family="Arial" font-size="22" fill="#1e3932">Coloca el archivo correspondiente en assets</text>
+  </svg>`;
+  return "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svg);
+}
+
+function renderCatalog(){
+  const s=getStation();
+  const c=getCampaign();
+  const catalog=document.getElementById("catalog");
+  catalog.innerHTML="";
+
+  if(s.optional)return;
+
+  s.variants.forEach((v,i)=>{
+    const div=document.createElement("div");
+    div.className="thumb"+(i===selectedVariant?" active":"");
+    div.onclick=()=>{
+      selectedVariant=i;
+      renderCatalog();
+      updateView(true);
+    };
+
+    const img=document.createElement("img");
+    img.src=`assets/${s.base}_${String(i+1).padStart(2,"0")}.jpg`;
+    img.onerror=function(){
+      this.onerror=null;
+      this.src=placeholder(v,c.id);
+    };
+
+    const span=document.createElement("span");
+    span.textContent=v;
+
+    div.appendChild(img);
+    div.appendChild(span);
+    catalog.appendChild(div);
+  });
+}
+
+function updateView(keepPhoto=false){
+  const c=getCampaign();
+  const s=getStation();
+  const tienda=storeName.value.trim()||"Sin definir";
+  const optional=s.optional;
+  const file=`LayOut_${cleanFile(getVariantName())}_${cleanFile(tienda)}`;
+
+  document.getElementById("dateLabel").textContent=today();
+  document.getElementById("mainTitle").textContent=`LayOut - ${c.id} ${c.icon}`;
+  document.getElementById("fileLabel").textContent=file;
+
+  document.getElementById("standardActions").classList.toggle("hidden",optional);
+  document.getElementById("optionalActions").classList.toggle("hidden",!optional);
+
+  document.getElementById("theoryBlock").classList.toggle("hidden",optional);
+  document.getElementById("realBlock").classList.toggle("hidden",optional);
+  document.getElementById("optionalBlock1").classList.toggle("hidden",!optional);
+  document.getElementById("optionalBlock2").classList.toggle("hidden",!optional);
+
+  if(optional){
+    document.getElementById("subTitle").textContent=`Tienda: ${tienda} · Opcional: ${getOptionalName(1)} / ${getOptionalName(2)}`;
+    document.getElementById("optTitle1").textContent=getOptionalName(1);
+    document.getElementById("optTitle2").textContent=getOptionalName(2);
+    document.getElementById("footerLabel").textContent=`${getOptionalName(1)} · ${getOptionalName(2)}`;
+  }else{
+    const variant=s.variants[selectedVariant] || s.variants[0];
+
+    document.getElementById("subTitle").textContent=`Tienda: ${tienda} · Estación: ${variant}`;
+    document.getElementById("layoutTitle").textContent=variant;
+    document.getElementById("stationCode").textContent=s.code;
+    document.getElementById("realTitle").textContent=`${variant} Real`;
+    document.getElementById("footerLabel").textContent=variant;
+
+    const img=document.getElementById("theoryImg");
+    img.src=getImagePath();
+    img.onerror=function(){
+      this.onerror=null;
+      this.src=placeholder(variant,c.id);
+    };
+  }
+
+  if(!keepPhoto){
+    if(optional){
+      clearPhoto("opt1",false);
+      clearPhoto("opt2",false);
+    }else{
+      clearPhoto("real",false);
+    }
+  }
+
+  document.title=file;
+}
+
+function changeStation(){
+  selectedVariant=0;
+  renderCatalog();
+  updateView(false);
+}
+
+campaignSelect.addEventListener("change",()=>updateView(true));
+stationSelect.addEventListener("change",changeStation);
+storeName.addEventListener("input",()=>updateView(true));
+
+optSelect1.addEventListener("change",()=>{
+  optName1.value=optSelect1.value==="Otra Área" ? "" : optSelect1.value;
+  updateView(true);
+});
+
+optSelect2.addEventListener("change",()=>{
+  optName2.value=optSelect2.value==="Otra Área" ? "" : optSelect2.value;
+  updateView(true);
+});
+
+optName1.addEventListener("input",()=>updateView(true));
+optName2.addEventListener("input",()=>updateView(true));
+
+function loadPhoto(file,target){
+  if(!file)return;
+
+  const map={
+    real:{img:"realImg",empty:"realEmpty"},
+    opt1:{img:"optImg1",empty:"optEmpty1"},
+    opt2:{img:"optImg2",empty:"optEmpty2"}
+  };
+
+  const reader=new FileReader();
+
+  reader.onload=e=>{
+    const img=document.getElementById(map[target].img);
+    img.src=e.target.result;
+    img.classList.remove("hidden");
+    document.getElementById(map[target].empty).style.display="none";
+  };
+
+  reader.readAsDataURL(file);
+}
+
+function takePhoto(){
+  document.getElementById("cameraInput").click();
+}
+
+function attachPhoto(){
+  document.getElementById("attachInput").click();
+}
+
+function takeOptionalPhoto(n){
+  document.getElementById(n===1 ? "optCamera1" : "optCamera2").click();
+}
+
+function attachOptionalPhoto(n){
+  document.getElementById(n===1 ? "optAttach1" : "optAttach2").click();
+}
+
+function clearPhoto(target,resetInputs=true){
+  const map={
+    real:{img:"realImg",empty:"realEmpty",inputs:["cameraInput","attachInput"]},
+    opt1:{img:"optImg1",empty:"optEmpty1",inputs:["optCamera1","optAttach1"]},
+    opt2:{img:"optImg2",empty:"optEmpty2",inputs:["optCamera2","optAttach2"]}
+  };
+
+  const item=map[target];
+  if(!item)return;
+
+  const img=document.getElementById(item.img);
+  img.src="";
+  img.classList.add("hidden");
+  document.getElementById(item.empty).style.display="block";
+
+  if(resetInputs){
+    item.inputs.forEach(id=>{
+      document.getElementById(id).value="";
+    });
+  }
+}
+
+document.getElementById("cameraInput").addEventListener("change",e=>{
+  loadPhoto(e.target.files[0],"real");
+});
+
+document.getElementById("attachInput").addEventListener("change",e=>{
+  loadPhoto(e.target.files[0],"real");
+});
+
+document.getElementById("optCamera1").addEventListener("change",e=>{
+  loadPhoto(e.target.files[0],"opt1");
+});
+
+document.getElementById("optAttach1").addEventListener("change",e=>{
+  loadPhoto(e.target.files[0],"opt1");
+});
+
+document.getElementById("optCamera2").addEventListener("change",e=>{
+  loadPhoto(e.target.files[0],"opt2");
+});
+
+document.getElementById("optAttach2").addEventListener("change",e=>{
+  loadPhoto(e.target.files[0],"opt2");
+});
+
+function exportPDF(){
+  updateView(true);
+
+  const tienda=storeName.value.trim()||"Tienda";
+  const filename=`LayOut_${cleanFile(getVariantName())}_${cleanFile(tienda)}.pdf`;
+
+  const element=document.getElementById("sheet");
+
+  const opt={
+    margin:0.15,
+    filename:filename,
+    image:{type:"jpeg",quality:0.98},
+    html2canvas:{scale:2,useCORS:true},
+    jsPDF:{unit:"in",format:"a4",orientation:"portrait"}
+  };
+
+  html2pdf().set(opt).from(element).save();
+}
+
+function sendWhatsApp(){
+  const c=getCampaign();
+  const tienda=storeName.value.trim()||"Sin definir";
+  const area=getVariantName();
+  const file=`LayOut_${cleanFile(area)}_${cleanFile(tienda)}`;
+
+  const msg=`Layout Starbucks%0A%0ATienda: ${encodeURIComponent(tienda)}%0ACampaña: ${encodeURIComponent(c.id+" "+c.icon)}%0AÁrea/Estación: ${encodeURIComponent(area)}%0AArchivo sugerido: ${encodeURIComponent(file)}%0A%0AComparativo LayOut vs Acomodo Real.`;
+
+  window.open(`https://wa.me/?text=${msg}`,"_blank");
+}
+
+renderCatalog();
+updateView(false);
+</script>
+
+</body>
+</html>
