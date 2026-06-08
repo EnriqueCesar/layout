@@ -4,10 +4,74 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <title>STARBUCKS Layouts</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#006241">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="LayOut">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <style>
 :root{--green:#006241;--green2:#00754A;--ink:#1e3932;--line:#d8e5df;--bg:#f7faf8;--soft:#eef7f2;--danger:#7a2e2e}
 *{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}.app{max-width:1400px;margin:auto;padding:14px}.header{background:white;border:1px solid var(--line);border-top:7px solid var(--green);border-radius:18px;padding:14px;margin-bottom:12px}.brand{display:flex;align-items:center;gap:10px}.logo{width:46px;height:46px;border-radius:12px;background:var(--soft);display:grid;place-items:center;font-size:24px}h1{margin:0;color:var(--green);font-size:24px}.subtitle{font-size:12px;margin-top:2px}.controls{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:14px}label{font-size:11px;font-weight:900;color:var(--green);text-transform:uppercase}input,select{width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;font-size:15px;background:white;color:var(--ink)}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}button{border:0;border-radius:12px;padding:12px 14px;background:var(--green);color:white;font-weight:900;cursor:pointer;font-size:14px}button.secondary{background:var(--green2)}button.light{background:var(--soft);color:var(--green);border:1px solid var(--line)}button.danger{background:#f4eeee;color:var(--danger);border:1px solid #ead0d0}.catalog{display:flex;gap:8px;overflow-x:auto;padding:10px 0 2px}.thumb{min-width:98px;border:2px solid transparent;border-radius:13px;padding:6px;background:white;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.08)}.thumb.active{border-color:var(--green);background:var(--soft)}.thumb img{width:86px;height:52px;object-fit:cover;border-radius:8px;display:block;margin:auto}.thumb span{display:block;text-align:center;font-size:11px;font-weight:900;color:var(--green);margin-top:5px}.sheet{background:white;border:1px solid var(--line);border-radius:18px;padding:14px;min-height:1120px;overflow:hidden}.sheet-head{display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--green);padding-bottom:8px;margin-bottom:10px}.sheet-title{display:flex;align-items:center;gap:10px}.sheet-title .icon{width:44px;height:44px;border-radius:10px;background:var(--soft);display:grid;place-items:center;font-size:22px}.main-title{font-size:25px;color:var(--green);font-weight:900}.meta{text-align:right;font-size:11px;line-height:1.35}.compare{display:grid;grid-template-rows:1fr 1fr;gap:10px;height:990px}.block{border:1px solid var(--line);border-radius:16px;padding:10px;display:flex;flex-direction:column;min-height:0}.block-head{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid var(--green);padding-bottom:7px;margin-bottom:8px}.kicker{font-size:12px;font-weight:900;color:var(--green);text-transform:uppercase}.block-title{font-size:21px;color:var(--green);font-weight:900;margin-top:3px}.code{font-size:12px;font-weight:900;color:var(--green)}.imgbox{flex:1;min-height:0;border:1px dashed #bdd8cc;border-radius:12px;background:#fbfdfc;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}.imgbox img{width:100%;height:100%;object-fit:contain;display:block}.empty{text-align:center;color:#5f7d72;font-weight:900;padding:20px}.real-actions{position:absolute;bottom:12px;left:12px;right:12px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.real-actions button{padding:10px 12px;font-size:13px}.note{margin-top:6px;font-size:10px;text-align:center;color:#6b8178}.optional-tools{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}.hidden{display:none!important}.footer{display:flex;justify-content:space-between;font-size:10px;margin-top:8px;color:#6b8178}
+
+/* === MODO EXPORTACIÓN PDF: una sola página limpia === */
+body.is-exporting{background:#fff!important}
+.sheet.pdf-export{
+  width:794px!important;
+  height:1123px!important;
+  min-height:1123px!important;
+  max-height:1123px!important;
+  padding:12px!important;
+  border:0!important;
+  border-radius:0!important;
+  overflow:hidden!important;
+  background:#fff!important;
+}
+.sheet.pdf-export .sheet-head{
+  padding-bottom:6px!important;
+  margin-bottom:8px!important;
+}
+.sheet.pdf-export .main-title{font-size:22px!important}
+.sheet.pdf-export .subtitle{font-size:10px!important}
+.sheet.pdf-export .meta{font-size:10px!important}
+.sheet.pdf-export .compare{
+  height:1014px!important;
+  gap:8px!important;
+}
+.sheet.pdf-export .block{
+  padding:8px!important;
+  border-radius:12px!important;
+  break-inside:avoid!important;
+  page-break-inside:avoid!important;
+}
+.sheet.pdf-export .block-head{
+  padding-bottom:5px!important;
+  margin-bottom:6px!important;
+}
+.sheet.pdf-export .block-title{font-size:18px!important}
+.sheet.pdf-export .kicker{font-size:10px!important}
+.sheet.pdf-export .note,
+.sheet.pdf-export .real-actions,
+.sheet.pdf-export .footer,
+.sheet.pdf-export #fileLabel,
+.sheet.pdf-export #stationCode,
+.sheet.pdf-export #realCode,
+.sheet.pdf-export #optCode1,
+.sheet.pdf-export #optCode2,
+.sheet.pdf-export .optional-tools{
+  display:none!important;
+}
+.sheet.pdf-export .imgbox{
+  border:1px solid #d8e5df!important;
+  border-radius:10px!important;
+}
+.sheet.pdf-export .empty{
+  font-size:18px!important;
+  color:#5f7d72!important;
+}
+
 @media(max-width:760px){.controls{grid-template-columns:1fr}.optional-tools{grid-template-columns:1fr}.sheet{min-height:auto}.compare{height:760px}.main-title{font-size:21px}.block-title{font-size:18px}.sheet-head{align-items:flex-start}}
 @media print{body{background:white}.header,.actions,.real-actions,.catalog,.optional-tools,.note,.footer,#fileLabel,#stationCode,#realCode,#optCode1,#optCode2{display:none!important}.app{padding:0;max-width:none}.sheet{border:0;border-radius:0;padding:6mm;min-height:0;height:calc(297mm - 16mm);overflow:hidden;page-break-after:avoid;break-after:avoid}.sheet-head{padding-bottom:6px;margin-bottom:8px}.main-title{font-size:22px}.subtitle{font-size:10px}.compare{height:238mm;gap:8px}.block{padding:8px;break-inside:avoid;page-break-inside:avoid}.block-head{padding-bottom:5px;margin-bottom:6px}.block-title{font-size:18px}@page{size:A4 portrait;margin:8mm}}
 </style>
@@ -31,7 +95,53 @@ function changeStation(){selectedVariant=0;renderCatalog();updateView(false)}cam
 function loadPhoto(file,target){if(!file)return;const map={real:{img:"realImg",empty:"realEmpty"},opt1:{img:"optImg1",empty:"optEmpty1"},opt2:{img:"optImg2",empty:"optEmpty2"}},reader=new FileReader();reader.onload=e=>{let img=document.getElementById(map[target].img);img.src=e.target.result;img.classList.remove("hidden");document.getElementById(map[target].empty).style.display="none"};reader.readAsDataURL(file)}function takePhoto(){document.getElementById("cameraInput").click()}function attachPhoto(){document.getElementById("attachInput").click()}function takeOptionalPhoto(n){document.getElementById(n===1?"optCamera1":"optCamera2").click()}function attachOptionalPhoto(n){document.getElementById(n===1?"optAttach1":"optAttach2").click()}
 function clearPhoto(target,resetInputs=true){const map={real:{img:"realImg",empty:"realEmpty",inputs:["cameraInput","attachInput"]},opt1:{img:"optImg1",empty:"optEmpty1",inputs:["optCamera1","optAttach1"]},opt2:{img:"optImg2",empty:"optEmpty2",inputs:["optCamera2","optAttach2"]}},item=map[target];if(!item)return;let img=document.getElementById(item.img);img.src="";img.classList.add("hidden");document.getElementById(item.empty).style.display="block";if(resetInputs)item.inputs.forEach(id=>document.getElementById(id).value="")}
 document.getElementById("cameraInput").addEventListener("change",e=>loadPhoto(e.target.files[0],"real"));document.getElementById("attachInput").addEventListener("change",e=>loadPhoto(e.target.files[0],"real"));document.getElementById("optCamera1").addEventListener("change",e=>loadPhoto(e.target.files[0],"opt1"));document.getElementById("optAttach1").addEventListener("change",e=>loadPhoto(e.target.files[0],"opt1"));document.getElementById("optCamera2").addEventListener("change",e=>loadPhoto(e.target.files[0],"opt2"));document.getElementById("optAttach2").addEventListener("change",e=>loadPhoto(e.target.files[0],"opt2"));
-function exportPDF(){updateView(true);const tienda=storeName.value.trim()||"Tienda",filename=`LayOut_${cleanFile(getVariantName())}_${cleanFile(tienda)}.pdf`,element=document.getElementById("sheet"),opt={margin:0,filename:filename,image:{type:"jpeg",quality:0.98},html2canvas:{scale:2,useCORS:true,scrollY:0,windowWidth:element.scrollWidth,windowHeight:element.scrollHeight},jsPDF:{unit:"mm",format:"a4",orientation:"portrait"},pagebreak:{mode:["avoid-all"]}};html2pdf().set(opt).from(element).save()}
+function exportPDF(){
+  updateView(true);
+
+  const tienda=storeName.value.trim()||"Tienda";
+  const filename=`LayOut_${cleanFile(getVariantName())}_${cleanFile(tienda)}.pdf`;
+  const element=document.getElementById("sheet");
+
+  element.classList.add("pdf-export");
+  document.body.classList.add("is-exporting");
+
+  const opt={
+    margin:0,
+    filename:filename,
+    image:{type:"jpeg",quality:0.98},
+    html2canvas:{
+      scale:2,
+      useCORS:true,
+      backgroundColor:"#ffffff",
+      scrollX:0,
+      scrollY:0,
+      windowWidth:794,
+      windowHeight:1123
+    },
+    jsPDF:{unit:"mm",format:"a4",orientation:"portrait"},
+    pagebreak:{mode:["avoid-all"]}
+  };
+
+  setTimeout(()=>{
+    html2pdf()
+      .set(opt)
+      .from(element)
+      .toPdf()
+      .get("pdf")
+      .then(pdf=>{
+        const total=pdf.internal.getNumberOfPages();
+        for(let i=total;i>1;i--){
+          pdf.deletePage(i);
+        }
+      })
+      .save()
+      .finally(()=>{
+        element.classList.remove("pdf-export");
+        document.body.classList.remove("is-exporting");
+      });
+  },100);
+}
+
 renderCatalog();updateView(false);
 </script>
 </body>
